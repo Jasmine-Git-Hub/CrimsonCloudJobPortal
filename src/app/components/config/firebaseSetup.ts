@@ -4,7 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 // 1. KAILANGAN NATIN 'TONG IMPORTS NA 'TO PARA SA AUTH AT DATABASE
 import { getAuth, signInAnonymously, User } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,7 +27,7 @@ if (import.meta.env.DEV) {
 const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 if (recaptchaSiteKey) {
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+    provider: new ReCaptchaEnterpriseProvider(recaptchaSiteKey),
     isTokenAutoRefreshEnabled: true,
   });
 } else {
